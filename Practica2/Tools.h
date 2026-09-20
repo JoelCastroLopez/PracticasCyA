@@ -6,7 +6,7 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Tools.h: programa definición de funciones auxiliares.
 // Contiene la definición de funciones auxiliares
 
@@ -21,5 +21,6 @@
 void Usage(int argc, std::string argv1);
 void Instruccion(std::string opcode, std::string argv1, std::string argv2);
 void Alfabeto_incorrecto(std::string cadena);
+bool Cadena_perteneciente(std::string cadena, Alfabeto alfabeto);
 
 #endif

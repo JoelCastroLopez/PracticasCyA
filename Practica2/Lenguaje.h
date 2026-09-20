@@ -6,7 +6,7 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Lenguaje.h: programa definición de la clase Lenguaje.
 // Contiene la definición de la clase Lenguaje
 

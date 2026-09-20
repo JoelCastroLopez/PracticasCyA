@@ -6,7 +6,7 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Cadena.h: programa definición de la clase Cadena.
 // Contiene la definición de la clase Cadena
 
@@ -39,11 +39,6 @@ class Cadena {
 
     // Sobrecarga de operadores
     friend std::ostream& operator<<(std::ostream& out, const Cadena& cadena);
-    
-    // Modificación
-    bool iguales(Cadena cadena2);
-    Lenguaje lss();
-    Lenguaje lsc();
   
   private:
     std::vector<char> simbolos_cadena_;

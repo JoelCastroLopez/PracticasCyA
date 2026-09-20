@@ -6,7 +6,7 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Lenguaje.cc: programa implementación de la clase Lenguaje.
 // Contiene la implementación de la clase Lenguaje
 
@@ -14,32 +14,22 @@
 #include "Cadena.h"
 
 
-/**
- * @brief Constructor clase Lenguaje por defecto
-*/
+// Constructor clase Lenguaje por defecto
 Lenguaje::Lenguaje(void) {}
 
-/**
- * @brief Constructor clase Lenguaje por parámetros
- * @param secuencia_cadenas Vector con la secuencia de acdenas que corresponderán al lenguaje
-*/
+// Constructor clase Lenguaje por parámetros
 Lenguaje::Lenguaje(std::vector<Cadena> secuencia_cadenas) {
   for (int i = 0; i < secuencia_cadenas.size(); i++) {
     cadenas_lenguaje_.push_back(secuencia_cadenas[i]);
   }
 }
 
-/**
- * @brief Método para meter cadenas un lenguaje
- * @param cadena Cadena a introducir en el lenguaje
-*/
+// Método para meter cadenas un lenguaje
 void Lenguaje::push_cadena(Cadena cadena) {
   cadenas_lenguaje_.push_back(cadena);
 }
 
-/**
- * @brief Método para meter la cadena vacía en un lenguaje si fuese necesario
-*/
+// Método para meter la cadena vacía en un lenguaje si fuese necesario
 void Lenguaje::push_cadena_vacia() {
   Alfabeto alfabeto;
   std::string signo_cadena_vacia{"&"};
@@ -47,12 +37,7 @@ void Lenguaje::push_cadena_vacia() {
   push_cadena(cadena_vacia);
 }
 
-/**
- * @brief Sobrecarga del operador de extraccion de la clase Lenguaje
- * @param out Variable ostream para sacar por pantalla
- * @param lenguaje Objeto Lenguaje que se va a escribir
- * @return Se devuelve el out con los los valores a imprimirse
-*/
+// Sobrecarga del operador de extraccion de la clase Lenguaje
 std::ostream& operator<<(std::ostream& out, const Lenguaje& lenguaje) {
   out << "{";
   int valor_coma{0};
@@ -67,12 +52,7 @@ std::ostream& operator<<(std::ostream& out, const Lenguaje& lenguaje) {
   return out;
 }
 
-/**
- * @brief Sobrecarga del operador de inserción de la clase Lenguaje
- * @param in Variable istream donde estará la información que recibirá lenguaje
- * @param lenguaje Objeto Lenguaje sobre el que se va a escribir
- * @return Se devuelve el in después de usarse
-*/
+// Sobrecarga del operador de inserción de la clase Lenguaje
 std::istream& operator>>(std::istream& in, Lenguaje& lenguaje) {
   std::string valor_entrada;
   in >> valor_entrada;
