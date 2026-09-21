@@ -29,8 +29,8 @@ class Alfabeto {
     ~Alfabeto() {}
 
     // Métodos de la clase
-    void push_simbolos(std::string nuevos_simbolos);
-    bool busqueda_simbolo(char caracter);
+    void PushSimbolos(const std::string& nuevos_simbolos);
+    bool BusquedaSimbolo(const char& caracter);
     std::set<char> get_simbolos_alfabeto() const { return simbolos_alfabeto_;}
 
     // Sobrecarga de operador extracción

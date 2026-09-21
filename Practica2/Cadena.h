@@ -31,10 +31,10 @@ class Cadena {
     ~Cadena() {}
 
     // Métodos de la clase
-    void push_simbolo(char nuevo_simbolo);
-    Cadena inversa();
-    Lenguaje prefijos();
-    Lenguaje sufijos();
+    void PushSimbolo(char nuevo_simbolo);
+    Cadena Inversa();
+    Lenguaje Prefijos();
+    Lenguaje Sufijos();
     int get_longitud() { return longitud_;}  // Getter para obtener el tamaño de la cadena
 
     // Sobrecarga de operadores

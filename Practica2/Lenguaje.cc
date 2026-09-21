@@ -25,16 +25,16 @@ Lenguaje::Lenguaje(std::vector<Cadena> secuencia_cadenas) {
 }
 
 // Método para meter cadenas un lenguaje
-void Lenguaje::push_cadena(Cadena cadena) {
+void Lenguaje::PushCadena(Cadena cadena) {
   cadenas_lenguaje_.push_back(cadena);
 }
 
 // Método para meter la cadena vacía en un lenguaje si fuese necesario
-void Lenguaje::push_cadena_vacia() {
+void Lenguaje::PushCadenaVacia() {
   Alfabeto alfabeto;
   std::string signo_cadena_vacia{"&"};
   Cadena cadena_vacia(signo_cadena_vacia, alfabeto);
-  push_cadena(cadena_vacia);
+  PushCadena(cadena_vacia);
 }
 
 // Sobrecarga del operador de extraccion de la clase Lenguaje
@@ -58,6 +58,6 @@ std::istream& operator>>(std::istream& in, Lenguaje& lenguaje) {
   in >> valor_entrada;
   Alfabeto alfabeto(valor_entrada);
   Cadena cadena(valor_entrada, alfabeto);
-  lenguaje.push_cadena(cadena);
+  lenguaje.PushCadena(cadena);
   return in;
 }

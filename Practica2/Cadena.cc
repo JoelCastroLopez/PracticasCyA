@@ -24,7 +24,7 @@ Cadena::Cadena(std::string simbolos, Alfabeto alfabeto) {
     vacia_ == true;                                  // y el vector de la cadena queda vacío
   } else {
     for (int i = 0; i < simbolos.size(); i++) {      // Si la cadena no es la vacía, se pasan los caracteres de la string al vector de la cadena 
-      if (alfabeto.busqueda_simbolo(simbolos[i]) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
+      if (alfabeto.BusquedaSimbolo(simbolos[i]) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
         if (simbolos[i] == '&') {
           std::cout << "No se puede introducir el simbolo '&', solo se puede usar en el fichero filein.txt para representar la cadena vacía, " << std::endl;
           std::cout << "esto sería de manera individual, no delante, detras o entre otros símbolos de la cadena" << std::endl;
@@ -40,12 +40,12 @@ Cadena::Cadena(std::string simbolos, Alfabeto alfabeto) {
 }
 
 // Método para meter simbolos a la cadena
-void Cadena::push_simbolo(char nuevo_simbolo) {
+void Cadena::PushSimbolo(char nuevo_simbolo) {
   if (nuevo_simbolo == '&') {
     std::cout << "No se puede introducir el simbolo '&', solo se puede usar en el fichero filein.txt para representar la cadena vacía" << std::endl;
     exit(EXIT_FAILURE);
   }
-  if (alfabeto_.busqueda_simbolo(nuevo_simbolo) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
+  if (alfabeto_.BusquedaSimbolo(nuevo_simbolo) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
     std::cout << "El símbolo '" << nuevo_simbolo << "' no pertenece al alfabeto " << alfabeto_ << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -53,7 +53,7 @@ void Cadena::push_simbolo(char nuevo_simbolo) {
 }
 
 // Método para sacar la cadena inversa a una dada
-Cadena Cadena::inversa() {
+Cadena Cadena::Inversa() {
   std::string inversa_string;
   if (simbolos_cadena_.size() == 0) {  // Caso exclusivo de la cadena vacía
     inversa_string.push_back('&');
@@ -67,9 +67,9 @@ Cadena Cadena::inversa() {
 }
 
 // Método para conformar el lenguaje formado por los prefijos de la cadena
-Lenguaje Cadena::prefijos() {
+Lenguaje Cadena::Prefijos() {
   Lenguaje lenguaje_final;
-  lenguaje_final.push_cadena_vacia();
+  lenguaje_final.PushCadenaVacia();
   if (simbolos_cadena_.size() == 0) {  // Caso exclusivo de la cadena vacía
     return lenguaje_final;
   } else {
@@ -79,7 +79,7 @@ Lenguaje Cadena::prefijos() {
         string_aux.push_back(simbolos_cadena_[j]);
       }
       Cadena cadena_aux(string_aux, alfabeto_);
-      lenguaje_final.push_cadena(cadena_aux);
+      lenguaje_final.PushCadena(cadena_aux);
     }
   }
   
@@ -87,9 +87,9 @@ Lenguaje Cadena::prefijos() {
 }
 
 // Método para conformar el lenguaje formado por los sufijos de la cadena
-Lenguaje Cadena::sufijos() {
+Lenguaje Cadena::Sufijos() {
   Lenguaje lenguaje_final;
-  lenguaje_final.push_cadena_vacia();
+  lenguaje_final.PushCadenaVacia();
   if (simbolos_cadena_.size() == 0) {   // Caso exclusivo de la cadena vacía
     return lenguaje_final;
   } else {
@@ -99,7 +99,7 @@ Lenguaje Cadena::sufijos() {
         string_aux.push_back(simbolos_cadena_[j]);
       }
       Cadena cadena_aux(string_aux, alfabeto_);
-      lenguaje_final.push_cadena(cadena_aux);
+      lenguaje_final.PushCadena(cadena_aux);
     }
     return lenguaje_final;
   }
@@ -122,7 +122,7 @@ std::istream& operator>>(std::istream& in, Cadena& cadena) {
   std::string valor_entrada;
   in >> valor_entrada;
   for (int i = 0; i < valor_entrada.size(); i++) {
-    cadena.push_simbolo(valor_entrada[i]);
+    cadena.PushSimbolo(valor_entrada[i]);
   }
   return in;
 }

@@ -63,7 +63,7 @@ void Instruccion(std::string opcode, std::string argv1, std::string argv2) {
         Alfabeto_incorrecto(segunda_parte_entrada);
         Alfabeto alfabeto(segunda_parte_entrada);
         Cadena cadena(primera_parte_entrada, alfabeto);  
-        archivo_salida << cadena << " -> " << cadena.inversa() << std::endl;
+        archivo_salida << cadena << " -> " << cadena.Inversa() << std::endl;
       }
       break;
     case 4:
@@ -71,7 +71,7 @@ void Instruccion(std::string opcode, std::string argv1, std::string argv2) {
         Alfabeto_incorrecto(segunda_parte_entrada);
         Alfabeto alfabeto(segunda_parte_entrada);
         Cadena cadena(primera_parte_entrada, alfabeto);
-        archivo_salida << cadena.prefijos() << std::endl;
+        archivo_salida << cadena.Prefijos() << std::endl;
       }
       break;
     case 5:
@@ -79,7 +79,7 @@ void Instruccion(std::string opcode, std::string argv1, std::string argv2) {
         Alfabeto_incorrecto(segunda_parte_entrada);
         Alfabeto alfabeto(segunda_parte_entrada);
         Cadena cadena(primera_parte_entrada, alfabeto);
-        archivo_salida << cadena.sufijos() << std::endl;
+        archivo_salida << cadena.Sufijos() << std::endl;
       }
       break;
     case 6:
@@ -114,7 +114,7 @@ void Alfabeto_incorrecto(std::string cadena) {
 // Función que verifica que la cadena pertenece al alfabeto
 bool Cadena_perteneciente(std::string cadena, Alfabeto alfabeto) {
   for (int i{0}; i < cadena.size(); i++) {
-    if (alfabeto.busqueda_simbolo(cadena[i]) == false) {
+    if (alfabeto.BusquedaSimbolo(cadena[i]) == false) {
       if (!(cadena.size() == 1 && cadena[0] == '&')) {
         return false;
       }

@@ -33,8 +33,8 @@ class Lenguaje {
     std::vector<Cadena> get_cadenas_lenguaje() { return cadenas_lenguaje_;}
 
     // Métodos de la clase
-    void push_cadena(Cadena cadena_nueva);
-    void push_cadena_vacia();
+    void PushCadena(Cadena cadena_nueva);
+    void PushCadenaVacia();
 
     // Sobrecarga de operadores
     friend std::ostream& operator<<(std::ostream& out, const Lenguaje& lenguaje);

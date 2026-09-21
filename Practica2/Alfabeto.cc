@@ -29,14 +29,14 @@ Alfabeto::Alfabeto(const Alfabeto& alfabeto) {
 }
 
 // Método para meter simbolos al alfabeto
-void Alfabeto::push_simbolos(std::string nuevos_simbolos) {
+void Alfabeto::PushSimbolos(const std::string& nuevos_simbolos) {
   for (int i = 0; i < nuevos_simbolos.size(); i++) {
     simbolos_alfabeto_.insert(nuevos_simbolos[i]);
   }
 }
 
 // Método para comprobar si un caracter está dentro de un alfabeto o no
-bool Alfabeto::busqueda_simbolo(char caracter_buscado) {
+bool Alfabeto::BusquedaSimbolo(const char& caracter_buscado) {
   for (char caracter : simbolos_alfabeto_) {    // Recorremos el set de simbolos correspondientes al alfabeto para verificar si uno nuevo pertenece al mismo
     if (caracter == caracter_buscado) {
       return true;
@@ -64,6 +64,6 @@ std::ostream& operator<<(std::ostream& out, const Alfabeto& alfabeto) {
 std::istream& operator>>(std::istream& in, Alfabeto& alfabeto) {
   std::string valor_entrada;
   in >> valor_entrada;
-  alfabeto.push_simbolos(valor_entrada);
+  alfabeto.PushSimbolos(valor_entrada);
   return in;
 }
