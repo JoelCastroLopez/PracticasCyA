@@ -1,0 +1,25 @@
+PROGRAM: miiprueba.html
+
+STRUCTURE:
+HTML: False
+HEAD: False
+BODY: False
+
+TAGS:
+[Line 1] img
+[Line 2] img
+
+ATTRIBUTES:
+[Line 1] img
+src = "regex.png"
+alt = "Expresiones regulares"
+width = "400"
+
+[Line 2] img
+src = "logo.bmp"
+alt = "Logo de la universidad"
+
+COMMENTS:
+IMAGES:
+
+
