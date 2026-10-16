@@ -6,7 +6,7 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Lenguaje.h: programa definición de la clase Lenguaje.
 // Contiene la definición de la clase Lenguaje
 
@@ -33,8 +33,8 @@ class Lenguaje {
     std::vector<Cadena> get_cadenas_lenguaje() { return cadenas_lenguaje_;}
 
     // Métodos de la clase
-    void push_cadena(Cadena cadena_nueva);
-    void push_cadena_vacia();
+    void PushCadena(Cadena cadena_nueva);
+    void PushCadenaVacia();
 
     // Sobrecarga de operadores
     friend std::ostream& operator<<(std::ostream& out, const Lenguaje& lenguaje);

@@ -6,32 +6,25 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Cadena.cc: programa implementación de la clase Cadena.
-
+// Contiene la implementación de la clase Cadena
 
 #include "Cadena.h"
 #include "Lenguaje.h"
 
 
-
-/**
- * @brief Constructor clase Cadena por defecto
-*/
+// Constructor clase Cadena por defecto
 Cadena::Cadena(void) {}
 
-/**
- * @brief Constructor clase Cadena por parámetros
- * @param simbolos Simbolos de la cadena
- * @param alfabeto Alfabeto al que pertenecerá la cadena
-*/
+// Constructor clase Cadena por parámetros
 Cadena::Cadena(std::string simbolos, Alfabeto alfabeto) {
   alfabeto_ = alfabeto;
   if (simbolos.size() == 1 && simbolos[0] == '&') {  // Comprobamos si la cadena que se nos ha dado es la cadena vacía, en dado caso se activa el atributo a true
     vacia_ == true;                                  // y el vector de la cadena queda vacío
   } else {
     for (int i = 0; i < simbolos.size(); i++) {      // Si la cadena no es la vacía, se pasan los caracteres de la string al vector de la cadena 
-      if (alfabeto.busqueda_simbolo(simbolos[i]) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
+      if (alfabeto.BusquedaSimbolo(simbolos[i]) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
         if (simbolos[i] == '&') {
           std::cout << "No se puede introducir el simbolo '&', solo se puede usar en el fichero filein.txt para representar la cadena vacía, " << std::endl;
           std::cout << "esto sería de manera individual, no delante, detras o entre otros símbolos de la cadena" << std::endl;
@@ -46,27 +39,21 @@ Cadena::Cadena(std::string simbolos, Alfabeto alfabeto) {
   longitud_ = simbolos_cadena_.size();  // Damos valor a la longuitud con el size() del vector
 }
 
-/**
- * @brief Método para meter simbolos a la cadena
- * @param nuevo_simbolo Caracter nuevo a introducir
-*/
-void Cadena::push_simbolo(char nuevo_simbolo) {
+// Método para meter simbolos a la cadena
+void Cadena::PushSimbolo(char nuevo_simbolo) {
   if (nuevo_simbolo == '&') {
     std::cout << "No se puede introducir el simbolo '&', solo se puede usar en el fichero filein.txt para representar la cadena vacía" << std::endl;
     exit(EXIT_FAILURE);
   }
-  if (alfabeto_.busqueda_simbolo(nuevo_simbolo) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
+  if (alfabeto_.BusquedaSimbolo(nuevo_simbolo) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente
     std::cout << "El símbolo '" << nuevo_simbolo << "' no pertenece al alfabeto " << alfabeto_ << std::endl;
     exit(EXIT_FAILURE);
   }
   simbolos_cadena_.push_back(nuevo_simbolo);
 }
 
-/**
- * @brief Método para sacar la cadena inversa a una dada
- * @return Se devuelve la cadena inversa
-*/
-Cadena Cadena::inversa() {
+// Método para sacar la cadena inversa a una dada
+Cadena Cadena::Inversa() {
   std::string inversa_string;
   if (simbolos_cadena_.size() == 0) {  // Caso exclusivo de la cadena vacía
     inversa_string.push_back('&');
@@ -79,13 +66,10 @@ Cadena Cadena::inversa() {
   return cadena_inversa;
 }
 
-/**
- * @brief Método para conformar el lenguaje formado por los prefijos de la cadena
- * @return Se devuelve el lenguaje formado por los prefijos de la cadena
-*/
-Lenguaje Cadena::prefijos() {
+// Método para conformar el lenguaje formado por los prefijos de la cadena
+Lenguaje Cadena::Prefijos() {
   Lenguaje lenguaje_final;
-  lenguaje_final.push_cadena_vacia();
+  lenguaje_final.PushCadenaVacia();
   if (simbolos_cadena_.size() == 0) {  // Caso exclusivo de la cadena vacía
     return lenguaje_final;
   } else {
@@ -95,20 +79,17 @@ Lenguaje Cadena::prefijos() {
         string_aux.push_back(simbolos_cadena_[j]);
       }
       Cadena cadena_aux(string_aux, alfabeto_);
-      lenguaje_final.push_cadena(cadena_aux);
+      lenguaje_final.PushCadena(cadena_aux);
     }
   }
   
   return lenguaje_final;
 }
 
-/**
- * @brief Método para conformar el lenguaje formado por los sufijos de la cadena
- * @return Se devuelve el lenguaje formado por los sufijos de la cadena
-*/
-Lenguaje Cadena::sufijos() {
+// Método para conformar el lenguaje formado por los sufijos de la cadena
+Lenguaje Cadena::Sufijos() {
   Lenguaje lenguaje_final;
-  lenguaje_final.push_cadena_vacia();
+  lenguaje_final.PushCadenaVacia();
   if (simbolos_cadena_.size() == 0) {   // Caso exclusivo de la cadena vacía
     return lenguaje_final;
   } else {
@@ -118,17 +99,13 @@ Lenguaje Cadena::sufijos() {
         string_aux.push_back(simbolos_cadena_[j]);
       }
       Cadena cadena_aux(string_aux, alfabeto_);
-      lenguaje_final.push_cadena(cadena_aux);
+      lenguaje_final.PushCadena(cadena_aux);
     }
     return lenguaje_final;
   }
 }
-/**
- * @brief Sobrecarga del operador de extraccion de la clase Cadena
- * @param out Variable ostream para sacar por pantalla
- * @param cadena Objeto Cadena que se va a escribir
- * @return Se devuelve el out con los los valores a imprimirse
-*/
+
+// Sobrecarga del operador de extraccion de la clase Cadena
 std::ostream& operator<<(std::ostream& out, const Cadena& cadena) {
   if (cadena.simbolos_cadena_.size() == 0) {  // Caso exclusivo para mostrar la cadena vacía
     out << '&';
@@ -140,17 +117,12 @@ std::ostream& operator<<(std::ostream& out, const Cadena& cadena) {
   return out;
 }
 
-/**
- * @brief Sobrecarga del operador de inserción de la clase Cadena
- * @param in Variable istream donde estará la información que recibirá cadena
- * @param cadena Objeto Cadena sobre el que se va a escribir
- * @return Se devuelve el in después de usarse
-*/
+// Sobrecarga del operador de inserción de la clase Cadena
 std::istream& operator>>(std::istream& in, Cadena& cadena) {
   std::string valor_entrada;
   in >> valor_entrada;
   for (int i = 0; i < valor_entrada.size(); i++) {
-    cadena.push_simbolo(valor_entrada[i]);
+    cadena.PushSimbolo(valor_entrada[i]);
   }
   return in;
 }

@@ -6,7 +6,7 @@
 // Práctica 6: Autómatas finitos
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 16/10/2025
+// Fecha: 16/10/2026
 // Archivo Estado.cc: programa que contiene la declaración de la clase estado
 // Contiene el programa principal
 

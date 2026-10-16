@@ -6,9 +6,9 @@
 // Práctica 2: Cadenas y lenguajes
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 20/09/2025
+// Fecha: 20/09/2026
 // Archivo Alfabeto.h: programa definición de la clase Alfabeto.
-
+// Contiene la definición de la clase Alfabeto
 
 #ifndef ALFABETO_H
 #define ALFABETO_H
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <set>
 #include <vector>
-
 
 
 class Alfabeto {
@@ -30,8 +29,8 @@ class Alfabeto {
     ~Alfabeto() {}
 
     // Métodos de la clase
-    void push_simbolos(std::string nuevos_simbolos);
-    bool busqueda_simbolo(char caracter);
+    void PushSimbolos(const std::string& nuevos_simbolos);
+    bool BusquedaSimbolo(const char& caracter);
     std::set<char> get_simbolos_alfabeto() const { return simbolos_alfabeto_;}
 
     // Sobrecarga de operador extracción
