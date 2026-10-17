@@ -8,17 +8,13 @@
 // Correo: alu0101485515@ull.edu.es
 // Fecha: 16/10/2026
 // Archivo Estado.cc: programa que contiene la declaración de la clase estado
-// Contiene el programa principal
-
 
 #include "Estado.h"
-
 
 /**
  * @brief Constructor de la clase Estado
 */
 Estado::Estado(void) {}
-
 
 /**
  * @brief Constructor clase estado
@@ -26,10 +22,9 @@ Estado::Estado(void) {}
 */
 Estado::Estado(std::string informacion) {
   int veredicto;
-  int n_transiciones;
 
-  std::istringstream flujo_enteros(informacion);   // Creamos un flujo de emteros para analizar los primeros tres apartados del string que nos llega
-  flujo_enteros >> nombre_ >> veredicto >> n_transiciones;
+  std::istringstream flujo_enteros(informacion);   
+  flujo_enteros >> nombre_ >> veredicto;
 
   if (veredicto == 0) {
     aceptacion_ = false;
@@ -37,21 +32,15 @@ Estado::Estado(std::string informacion) {
     aceptacion_ = true;
   }
   
-  std::string valores_transiciones;                // Con otro flujo, esta vez de strings, analizamos lo que queda de la cadena
-  for (int i{6}; i < informacion.size(); i++) {
-    valores_transiciones.push_back(informacion[i]);
-  }
-  
-  std::stringstream flujo_strings(valores_transiciones);
   std::string entrada_string, estado_resultante;
 
-  while (flujo_strings >> entrada_string >> estado_resultante) {   // Meto los datos en el multimap del estado en sí
+  // Seguimos leyendo del mismo flujo hasta que se acabe la línea en pares
+  while (flujo_enteros >> entrada_string >> estado_resultante) {   // Meto los datos en el map del estado en sí
     char entrada = entrada_string[0];
     int estado_siguiente = stoi(estado_resultante);
     transiciones_.insert({entrada, estado_siguiente});
   }
 }
-
 
 /**
  * @brief Devuelve los símbolos del estado
@@ -65,52 +54,18 @@ std::set<char> Estado::get_simbolos_transiciones() {
   return simbolos;
 }
 
-
 /**
- * @brief Devuelve los estados siguientes de un vector con cierto símbolo
+ * @brief Devuelve el estado siguiente de cierto símbolo
  * @param simbolo Símbolo a buscar
- * @return Devuelve el vector con los estados correspondientes a la transición
+ * @return Devuelve el estado correspondiente a la transición
 */
-std::set<int> Estado::transicion_con_simbolo(char simbolo) {
-  std::set<int> transiciones;
-  auto rango = transiciones_.equal_range(simbolo);
-    for (auto it = rango.first; it != rango.second; ++it) {
-      transiciones.insert(it->second);
-    }
-  return transiciones;
-}
-
-
-/*Estado busqueda_estado(int nombre, std::set<Estado> estados_totales) {
-  for (Estado iterador : estados_totales) {
-    if (iterador.get_nombre() == nombre) {
-      return iterador;
-    }
+int Estado::transicion_con_simbolo(char simbolo) {
+  auto it = transiciones_.find(simbolo);
+  if (it != transiciones_.end()) {
+    return it->second;
   }
-  Estado estado("-1 0 0");
-  return estado;
-}*/
-
-
-/*void Estado::epsilon_clausura(std::set<int> clausura, std::set<Estado> estados_totales) {
-  // Si este estado ya está en la clausura, no hacemos nada
-    if (clausura.find(get_nombre()) != clausura.end())
-        return;
-
-    // Añadimos este estado a la clausura
-    clausura.insert(get_nombre());
-
-    // Buscamos los destinos por epsilon
-    std::set<int> epsilons = transicion_con_simbolo('&');
-
-    // Para cada destino, llamamos recursivamente
-    for (int id : epsilons) {
-        Estado auxiliar;
-        Estado siguiente = auxiliar.busqueda_estado(id, estados_totales);
-        siguiente.epsilon_clausura(clausura, estados_totales);
-    }
-}*/
-
+  return -1; // Devuelve -1 si no hay transición definida
+}
 
 /**
  * @brief Sobrecarga operador <<
@@ -122,7 +77,6 @@ std::ostream& operator<<(std::ostream& out, const Estado& estado) {
   out << "[" << estado.nombre_ << "] " << " -> " << estado.aceptacion_;
   return out;
 }
-
 
 /**
  * @brief Sobrecarga del operador menor de la clase Estado
@@ -136,7 +90,6 @@ bool operator<(Estado estado1, Estado estado2) {
   } 
   return false;
 }
-
 
 /**
  * @brief Sobrecarga del operador == de la clase Estado

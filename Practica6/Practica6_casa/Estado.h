@@ -18,6 +18,7 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <set>
 
 
 #include "Alfabeto.h"
@@ -31,10 +32,8 @@ class Estado {
   Estado(std::string informacion);
 
   // Método para buscar las transiciones con un signo desde cierto estado
-  std::set<int> transicion_con_simbolo(char simbolo);
+  int transicion_con_simbolo(char simbolo);
   std::set<char> get_simbolos_transiciones();
-  //Estado busqueda_estado(int nombre, std::set<Estado> estados_totales);
-  //void epsilon_clausura(std::set<int> clausura, std::set<Estado> estados_totales);
   
   // Sobrecargas de operadores útiles
   friend std::ostream& operator<<(std::ostream& out, const Estado& estado);
@@ -44,16 +43,16 @@ class Estado {
   // Getters (constantes y normales)
   int get_nombre() { return nombre_; }
   bool get_aceptacion() { return aceptacion_; }
-  std::multimap<char, int> get_transiciones() { return transiciones_; }
+  std::map<char, int> get_transiciones() { return transiciones_; }
 
   int get_nombre() const { return nombre_; }
   bool get_aceptacion() const { return aceptacion_; }
-  std::multimap<char, int> get_transiciones() const { return transiciones_; }
+  std::map<char, int> get_transiciones() const { return transiciones_; }
 
  private:
   int nombre_;
   bool aceptacion_;
-  std::multimap<char, int> transiciones_;
+  std::map<char, int> transiciones_;
 };
 
 #endif

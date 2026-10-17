@@ -21,7 +21,7 @@ Cadena::Cadena(void) {}
 Cadena::Cadena(std::string simbolos, Alfabeto alfabeto) {
   alfabeto_ = alfabeto;
   if (simbolos.size() == 1 && simbolos[0] == '&') {  // Comprobamos si la cadena que se nos ha dado es la cadena vacía, en dado caso se activa el atributo a true
-    vacia_ == true;                                  // y el vector de la cadena queda vacío
+    vacia_ = true;                                   // y el vector de la cadena queda vacío
   } else {
     for (int i = 0; i < simbolos.size(); i++) {      // Si la cadena no es la vacía, se pasan los caracteres de la string al vector de la cadena 
       if (alfabeto.BusquedaSimbolo(simbolos[i]) == false) {  // Comprobamos que los símbolos pertenecen al alfabeto correspondiente

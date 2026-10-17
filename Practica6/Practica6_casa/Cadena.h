@@ -36,6 +36,7 @@ class Cadena {
     Lenguaje Prefijos();
     Lenguaje Sufijos();
     int get_longitud() { return longitud_;}  // Getter para obtener el tamaño de la cadena
+    std::vector<char> get_simbolos() const { return simbolos_cadena_; }
 
     // Sobrecarga de operadores
     friend std::ostream& operator<<(std::ostream& out, const Cadena& cadena);

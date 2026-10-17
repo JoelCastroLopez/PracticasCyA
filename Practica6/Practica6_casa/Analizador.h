@@ -6,7 +6,7 @@
 // Práctica 6: Autómatas finitos
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 16/10/2025
+// Fecha: 16/10/2026
 // Archivo Analizador.h: programa que contiene la declaración de la función que analiza el .fa
 
 
@@ -25,6 +25,5 @@
 
 void Analizador_automata(const std::string& nombre_archivo, Automata& automata);
 void Comprobar_cadena(std::string nombre_archivo2, Automata automata);
-void Gramaticas(const std::string& nombre_archivo, const std::string& nombre_archivo2);
 
 #endif

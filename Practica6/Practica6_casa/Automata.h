@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <set>
+#include <iomanip>
 
 
 #include "Alfabeto.h"
@@ -31,7 +32,6 @@ class Automata {
   // Métodos para meter elementos en los atributos del autómata
   void push_estado(Estado estado) { conjunto_estados_.insert(estado); }
   void push_estados_finales(Estado estado) { estados_finales_.insert(estado);}
-  void push_estados_actuales(Estado estado) { estados_actuales_.insert(estado);}
 
   // Getters (constantes y normales)
   int get_estado_inicial() const { return estado_inicial_; }
@@ -44,13 +44,8 @@ class Automata {
   void set_alfabeto(Alfabeto alfabeto) { alfabeto_= alfabeto; }
   void set_estado_inicial(int estado_inicial) { estado_inicial_= estado_inicial; }
 
-  // Método para mostrar los estados actuales (no tiene un uso específico en la práctica, solo lo usé para verificar el proceso)
-  void mostrar_estados_actuales();
-
   // Métodos usados en proceso de autómata
   Estado busqueda_estado(int nombre);
-  bool comprobacion_estados_finales();
-  void vaciar_estado_actual() { estados_actuales_.clear();}
   bool cadena_aceptada(Cadena cadena);
 
   // Sobrecarga del operador <<
@@ -61,7 +56,6 @@ class Automata {
   std::set<Estado> conjunto_estados_;
   int estado_inicial_;
   std::set<Estado> estados_finales_;
-  std::set<Estado> estados_actuales_;
 };
 
 #endif

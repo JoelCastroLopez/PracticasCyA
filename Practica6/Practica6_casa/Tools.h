@@ -6,9 +6,8 @@
 // Práctica 6: Autómatas finitos
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 16/10/2025
+// Fecha: 16/10/2026
 // Archivo Tools.h: programa que contiene las herramientas básicas para el programa
-
 
 #ifndef TOOLS_H
 #define TOOLS_H
@@ -16,10 +15,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
-
-#include "Automata.h"
-
+#include <cstdlib>
 
 void Usage(int argc, char* argv[]);
 

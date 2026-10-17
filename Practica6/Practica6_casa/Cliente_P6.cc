@@ -6,24 +6,19 @@
 // Práctica 6: Autómatas finitos
 // Autor: Joel Castro López
 // Correo: alu0101485515@ull.edu.es
-// Fecha: 16/10/2025
+// Fecha: 16/10/2026
 // Archivo Cliente_P6.cc: programa que contiene el main
-
 
 #include <iostream>
 
-
 #include "Tools.h"
 #include "Analizador.h"
-
-
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
   Automata automata;
   Analizador_automata(argv[1], automata);
   Comprobar_cadena(argv[2], automata);
-  Gramaticas(argv[1], argv[3]);
 
   return 0;
 }
