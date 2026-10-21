@@ -33,7 +33,6 @@ class Estado {
 
   // Método para buscar las transiciones con un signo desde cierto estado
   int transicion_con_simbolo(char simbolo);
-  std::set<char> get_simbolos_transiciones();
   
   // Sobrecargas de operadores útiles
   friend std::ostream& operator<<(std::ostream& out, const Estado& estado);

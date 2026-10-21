@@ -43,18 +43,6 @@ Estado::Estado(std::string informacion) {
 }
 
 /**
- * @brief Devuelve los símbolos del estado
- * @return Devuelve el set con los símbolos del estado
-*/
-std::set<char> Estado::get_simbolos_transiciones() {
-  std::set<char> simbolos;
-    for (const auto& par : transiciones_) {
-      simbolos.insert(par.first);
-    }
-  return simbolos;
-}
-
-/**
  * @brief Devuelve el estado siguiente de cierto símbolo
  * @param simbolo Símbolo a buscar
  * @return Devuelve el estado correspondiente a la transición
